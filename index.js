@@ -9,7 +9,12 @@ const todo = require('./todo');
 
 const argv = yargs
 .usage('$0 <cmd> [<args>]')
-.command('add [title]', 'Add a new tofo')
+.command('add [title]', 'Add a new todo', {
+    title: {
+      describe: 'Title of todo',
+      demand: true,
+    },
+})
 .command('list', 'List all todos')
 .command('remove', 'Remove a todo')
 .help()
