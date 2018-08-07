@@ -4,12 +4,22 @@
 
 // Dependencies
 const fs = require('fs');
+const yargs = require('yargs');
 const todo = require('./todo');
 
-// Read command and option
-let command = process.argv[2];
-let option = process.argv[3];
+const argv = yargs
+.usage('$0 <cmd> [<args>]')
+.command('add [title]', 'Add a new tofo')
+.command('list', 'List all todos')
+.command('remove', 'Remove a todo')
+.help()
+.argv;
 
+// Read command and option
+let command = argv._[0];
+let option = argv.title;
+
+console.log(argv);
 // Command Switch
 switch (command) {
   case 'add':
