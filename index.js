@@ -13,6 +13,7 @@ const argv = yargs
     title: {
       describe: 'Title of todo',
       demand: true,
+      alias: 't',
     },
 })
 .command('list', 'List all todos')
@@ -24,12 +25,12 @@ const argv = yargs
 let command = argv._[0];
 let option = argv.title;
 
-console.log(argv);
+// console.log(argv);
+
 // Command Switch
 switch (command) {
   case 'add':
     console.log('Adding new task.');
-    console.log('----------------');
     const myTodo = todo.addTodo(option);
     if (myTodo) {
       console.log(`'${option}' successfuly added to your todo list.`);
@@ -39,12 +40,10 @@ switch (command) {
     break;
   case 'list':
     console.log('Listing all todos.');
-    console.log('------------------');
     todo.listTodos();
     break;
   case 'remove':
     console.log('Removing todo.');
-    console.log('--------------');
     const removed = todo.removeTodo(option);
     if (removed) {
       console.log(`'${option}' successfuly removed from your todo list.`);
